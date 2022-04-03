@@ -1,0 +1,253 @@
+<div class="wrapper d-flex align-items-stretch">
+
+  <app-sidenav-definitivo></app-sidenav-definitivo>
+
+  <div id="content" class="p-4 p-md-5">
+
+    <app-navbar></app-navbar>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container pt-3">
+          <div class="table-responsive">
+            <div class="table-wrapper mar">
+              <div class="table-title">
+                <div class="row ">
+                  <div class="col-sm-6">
+                    <h2><b>Productos Fertilizantes</b></h2>
+                  </div>
+                  <div class="col-sm-6">
+                    <a href="#addEmployeeModal" (click)="vaciarInputs(fertilizanteForm)" class="btn btn-success buttonAgregar" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Fertilizante</span></a>
+                  </div>
+                </div>
+              </div>
+              <div id="global">
+                <table width="100%" border="solid" class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nombre comercial</th>
+                      <th>Tipo</th>
+                      <th>Variedad</th>
+                      <th>Concentración (%)</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let fertilizante of fertilizantes | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                      <td width="200px"> {{ fertilizante.nombreComercial}}</td>
+                      <td width="100px"> {{ fertilizante.tipo}}</td>
+                      <td width="150px"> {{ fertilizante.variedad}}</td>
+                      <td width="30px"> {{ fertilizante.concentracion}} %</td>
+                      <td>
+                        <a href="#editEmployeeModal" (click)='cargarFertilizante(fertilizante)' class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                        <a (click)='delete(fertilizante)' href="" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="margin-left: 567px; width: 300px; background-color: #D68910; margin-top: 15px;" *ngIf="contFertis >= 6">
+                <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"  (pageChange)="pageActual = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AGREGAR -->
+
+        <div id="addEmployeeModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form  #fertilizanteForm="ngForm">
+                <div class="modal-header">
+                  <h4 class="modal-title">Agregar Fertilizante</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="form-group">
+                    <label for="nombreComercial">Nombre comercial</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.nombreComercial" name="nombrecomercial" #nombrecomercial="ngModel" required minlength="5" placeholder="Ingrese nombre comercial"
+                    maxlength="25" onkeypress='return ((event.charCode >= 97 && event.charCode <= 122)
+                                       || (event.charCode >= 65 && event.charCode <= 90)
+                                       || (event.charCode == 32 )
+                                       || (event.charCode ==241) || (event.charCode ==209)
+                                       || (event.charCode ==193) || (event.charCode ==201) || (event.charCode ==205) || (event.charCode ==211)
+                                       ||  (event.charCode ==218) || (event.charCode ==225) || (event.charCode ==233) || (event.charCode ==237)
+                                       || (event.charCode ==243) || (event.charCode ==250)) '>
+                   <div class="alert alert-danger" *ngIf="nombrecomercial.invalid && (nombrecomercial.dirty || nombrecomercial.touched)">
+                     <div *ngIf="nombrecomercial.errors.required">
+                       Nombre comercial es requerido
+                     </div>
+                     <div *ngIf="nombrecomercial.errors.minlength">
+                       Nombre comercial debe tener mínimo 5 caracteres
+                     </div>
+                   </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select #mySelect (change)='enviarId(mySelect.value)' ([ngModel])="fertilizante.tipo" name="tipo" class="form-control" id="select" required>
+                      <option value="">Seleccione</option>
+                      <option *ngFor="let tipoFerti of tipos" value="{{tipoFerti.nombre}}">{{tipoFerti.nombre}}</option>
+                    </select>
+                    <div class="alert alert-danger" *ngIf="mySelect.invalid && (mySelect.dirty || mySelect.touched)">
+                      <div *ngIf="mySelect.errors.required">
+                        El tipo es requerido
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="variedad">Variedad</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.variedad" name="variedad" #variedad="ngModel" required minlength="5" placeholder="Ingrese variedad"
+                    maxlength="30" onkeypress='return ((event.charCode >= 97 && event.charCode <= 122)
+                                       || (event.charCode >= 65 && event.charCode <= 90)
+                                       || (event.charCode == 32 )
+                                       || (event.charCode ==241) || (event.charCode ==209)
+                                       || (event.charCode ==193) || (event.charCode ==201) || (event.charCode ==205) || (event.charCode ==211)
+                                       ||  (event.charCode ==218) || (event.charCode ==225) || (event.charCode ==233) || (event.charCode ==237)
+                                       || (event.charCode ==243) || (event.charCode ==250)) '>
+                   <div class="alert alert-danger" *ngIf="variedad.invalid && (variedad.dirty || variedad.touched)">
+                     <div *ngIf="variedad.errors.required">
+                       Variedad es requerido
+                     </div>
+                     <div *ngIf="variedad.errors.minlength">
+                       Variedad debe tener mínimo 5 caracteres
+                     </div>
+                   </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="concentracion">Concentración (%)</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.concentracion" placeholder="ej 2.0 , 2.3"
+                     #concentracion="ngModel" name="concentracion"
+                    required minlength="1" maxlength="5" pattern="[\d]{1,2}[.][\d]{1,2}"
+                    onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode <= 46))'>
+                    <div class="alert alert-danger" *ngIf="concentracion.invalid && (concentracion.dirty || concentracion.touched)">
+                      <div *ngIf="concentracion.errors.required">
+                       Concentración es requerido
+                      </div>
+                      <div *ngIf="concentracion.errors.minlength">
+                        Concentración debe tener mínimo 1 digitos
+                      </div>
+                      <div *ngIf="concentracion.errors.maxlength">
+                        Concentración debe tener maximo dos decimales ej 22.22
+                      </div>
+                      <div *ngIf="concentracion.errors">
+                           máximo dos decimales, formato requerido xx.xx , x.xx , x.x , xx.x
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-default left" data-dismiss="modal" style="background: #BF3D3D; color: white" value="Cancel">
+                  <input type="button" (click)='crear()' data-dismiss="modal" class="btn btn-success" [disabled]="!fertilizanteForm.form.valid || flag" value="Agregar">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- EDITAR  -->
+        <div id="editEmployeeModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form #fertilizanteFormEdit="ngForm">
+                <div class="modal-header">
+                  <h4 class="modal-title">Editar Fertilizante</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="form-group">
+                    <label for="nombreComercial">Nombre comercial</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.nombreComercial" name="nombrecomercial" #nombrecomercialedit="ngModel" required minlength="5"
+                    maxlength="25" onkeypress='return ((event.charCode >= 97 && event.charCode <= 122)
+                                       || (event.charCode >= 65 && event.charCode <= 90)
+                                       || (event.charCode == 32 )
+                                       || (event.charCode ==241) || (event.charCode ==209)
+                                       || (event.charCode ==193) || (event.charCode ==201) || (event.charCode ==205) || (event.charCode ==211)
+                                       ||  (event.charCode ==218) || (event.charCode ==225) || (event.charCode ==233) || (event.charCode ==237)
+                                       || (event.charCode ==243) || (event.charCode ==250)) '>
+                   <div class="alert alert-danger" *ngIf="nombrecomercialedit.invalid && (nombrecomercialedit.dirty || nombrecomercialedit.touched)">
+                     <div *ngIf="nombrecomercialedit.errors.required">
+                       Nombre comercial es requerido
+                     </div>
+                     <div *ngIf="nombrecomercialedit.errors.minlength">
+                       Nombre comercial debe tener mínimo 5 caracteres
+                     </div>
+                   </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select #mySelect2 (change)='enviarId2(mySelect2.value)' ([ngModel])="fertilizante.tipo" name="tipo" class="form-control" id="selectEdit" required>
+                      <option value="">Seleccione</option>
+                      <option *ngFor="let tipoFerti of tipos"  [selected]="tipoFerti.nombre == fertilizante.tipo"  value="{{tipoFerti.nombre}}">{{tipoFerti.nombre}}</option>
+                    </select>
+                    <div class="alert alert-danger" *ngIf="mySelect2.invalid && (mySelect2.dirty || mySelect2.touched)">
+                      <div *ngIf="mySelect2.errors.required">
+                        El tipo es requerido
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="variedad">Variedad</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.variedad" name="variedad" #variedadEdi="ngModel" required minlength="5"
+                    maxlength="30" onkeypress='return ((event.charCode >= 97 && event.charCode <= 122)
+                                       || (event.charCode >= 65 && event.charCode <= 90)
+                                       || (event.charCode == 32 )
+                                       || (event.charCode ==241) || (event.charCode ==209)
+                                       || (event.charCode ==193) || (event.charCode ==201) || (event.charCode ==205) || (event.charCode ==211)
+                                       ||  (event.charCode ==218) || (event.charCode ==225) || (event.charCode ==233) || (event.charCode ==237)
+                                       || (event.charCode ==243) || (event.charCode ==250)) '>
+                   <div class="alert alert-danger" *ngIf="variedadEdi.invalid && (variedadEdi.dirty || variedadEdi.touched)">
+                     <div *ngIf="variedadEdi.errors.required">
+                       Variedad es requerido
+                     </div>
+                     <div *ngIf="variedadEdi.errors.minlength">
+                       Variedad debe tener mínimo 5 caracteres
+                     </div>
+                   </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="concentracion">Concentración (%)</label>
+                    <input type="text" class="form-control" [(ngModel)]="fertilizante.concentracion" placeholder="ej 2.0 , 2.3"
+                     #concentracionEdi="ngModel" name="concentracion"
+                    required minlength="1" maxlength="5" pattern="[\d]{1,2}[.][\d]{1,2}"
+                    onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode <= 46))'>
+                    <div class="alert alert-danger" *ngIf="concentracionEdi.invalid && (concentracionEdi.dirty || concentracionEdi.touched)">
+                      <div *ngIf="concentracionEdi.errors.required">
+                       Concentración es requerido
+                      </div>
+                      <div *ngIf="concentracionEdi.errors.minlength">
+                        Concentración debe tener mínimo 1 digitos
+                      </div>
+                      <div *ngIf="concentracionEdi.errors.maxlength">
+                        Concentración debe tener maximo dos decimales ej 22.22
+                      </div>
+                      <div *ngIf="concentracionEdi.errors">
+                           máximo dos decimales, formato requerido xx.xx , x.xx , x.x , xx.x
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-default left" data-dismiss="modal" style="background: #BF3D3D; color: white" value="Cancel">
+                  <input type="button" (click)='update()' data-dismiss="modal" class="btn btn-success" style="background: #17a2b8;" [disabled]="!fertilizanteFormEdit.form.valid || flag2" value="Guardar">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

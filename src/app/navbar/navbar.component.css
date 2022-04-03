@@ -1,0 +1,21 @@
+.cambia {
+  color: #000000 !important;
+}
+.cambia:hover {
+  color: #f8b739 !important;
+}
+
+.fix {
+  margin-top: 1em;
+  margin-right: 15px;
+}
+
+.fix2 {
+  margin-top: -25px;
+}
+
+.cambio {
+  background: rgb(146, 202, 32, 0.7);
+  opacity: 89%;
+  border-radius: 45px;
+}

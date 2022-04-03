@@ -1,0 +1,56 @@
+  <div class="wrapper d-flex align-items-stretch">
+
+    <app-sidenav-definitivo></app-sidenav-definitivo>
+
+    <div id="content" class="p-4 p-md-5">
+
+      <app-navbar></app-navbar>
+
+      <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                Bienvenid@ al Sistema de Registro de Productos Fitosanitarios y/o Fertilizantes
+              </div>
+              <div class="card-body">
+                <h6>Información del campo</h6>
+                <br>
+                <ol *ngFor="let array of arraysCampos">
+                  <li style="list-style-type: none;">Nombre: {{array.nombre}}</li>
+                  <li style="list-style-type: none;">Dueñ@: {{array.nombreDuenoCampo}}</li>
+                  <li style="list-style-type: none;">Dirección: {{array.direccion}}</li>
+                  <li style="list-style-type: none;">Administrador: {{array.nombreAdministrador}}</li>
+                 </ol> 
+                <!-- <p>Direccion: Autonomia S/N, Santa Maria Callejon Tello</p>
+                <p>Región: V Región</p>
+                <p>Ciudad: San Felipe</p>
+                <p>Administrador de campo: Abelino Jose</p> -->
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h6>Distribución del campo</h6>
+                <br>
+
+                 <ol *ngFor="let array of arraysCuarteles"><b>{{array.nombre}}</b>
+                  <li style="list-style-type: disc;">Encargado: {{array.nombreEncargadoBPA}}</li>
+                  <li style="list-style-type: disc;">Predio: {{array.nombrePredio}}</li>
+                 </ol> 
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

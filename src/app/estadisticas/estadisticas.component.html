@@ -1,0 +1,122 @@
+<div class="wrapper d-flex align-items-stretch" >
+
+  <app-sidenav-definitivo></app-sidenav-definitivo>
+
+  <div id="content" class="p-3 p-md-5">
+
+    <app-navbar></app-navbar>
+
+    <div class="card">
+      <div class="card-header">
+        Menú Estadísticas
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Seleccione el gráfico que desea ver</h5>
+        <label style="text-align: left;">Presione sobre las casillas de colores para ocultar o mostrar información en los gráficos</label>
+        <div class="" style="margin-left: auto; margin-right: auto;">
+          <a class="btn btn-primary font1" (click)="mostrar1()" style="margin-left: 55px; color:white;">Registros Fertilizantes</a>
+          <a class="btn btn-primary font1" (click)="mostrar2()" style="margin-left: 5px; color:white;">Regitros Fitosanitarios</a>
+          <a class="btn btn-primary font1" (click)="mostrar3()" style="margin-left: 5px; color:white;">Tipos Fertilizantes</a>
+          <a class="btn btn-primary font1" (click)="mostrar4()" style="margin-left: 5px; color:white;">Tipos Fitosanitarios</a>
+          <a class="btn btn-primary font1" (click)="mostrar5()" style="margin-left: 5px; color:white;">Comparativa</a>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <div *ngIf="chartOne" class="divChart" id="chart1">
+      <div class="jeje">
+        <h6 style="text-align: center;">Registros de productos Fertilizantes</h6>
+        <h6 style="text-align: center;">Temporada {{anioFiltrarFerti1}}-{{anioFiltrarFerti2}}</h6>
+        <canvas id="myChart" width="300" height="300"></canvas>
+      </div>
+      <div class="filtrarAño">
+        <h6 class="title1">Filtrar por temporada</h6>
+        <br>
+        <div class="fil1">
+          <input class="anio1 form-control" type="text" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' placeholder="ingrese año 1" id="anio1" minlength="4" maxlength="4">
+          <input class="anio2 form-control" type="text" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' placeholder="ingrese año 2" id="anio2" minlength="4" maxlength="4">
+          <button type="button" class="btn btn-outline-dark ferti1" type="button" style="margin-left: 15px;" name="button" id="ferti1" [disabled]="flagSpinner" (click)="filtrarFertilizante()">Filtrar</button>
+        </div>
+      </div>
+      <label style="writing-mode: vertical-rl; text-orientation: sideways-left; margin-top: -900px; margin-left: -40px; margin-bottom: 290px; letter-spacing: 0.25em; -webkit-transform: rotate(-180deg);">Cantidad de registros</label>
+    </div>
+
+
+    <div class="divChart2" id="chart2" style="display:none;">
+      <h6 style="text-align: center;">Registros de productos Fitosanitario</h6>
+      <h6 style="text-align: center;">Temporada {{anioFiltrarFito1}}-{{anioFiltrarFito2}}</h6>
+      <canvas id="myChart2" width="300" height="300"></canvas>
+      <div class="filtrarAño2">
+        <h6 class="title2">Filtrar por temporada</h6>
+        <br>
+        <div class="fil2">
+          <input type="text" class="form-control anio3" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 1" id="anio1Fito">
+          <input type="text" class="form-control anio4" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 2" id="anio2Fito">
+          <button type="button" class="btn btn-outline-dark fito1" name="button" id="fito2" (click)="filtrarFitosanitario()">Filtrar</button>
+        </div>
+      </div>
+      <label style="writing-mode: vertical-rl; text-orientation: sideways-left; margin-top: -900px; margin-left: -40px; margin-bottom: 290px; letter-spacing: 0.25em; -webkit-transform: rotate(-180deg);">Cantidad de registros</label>
+    </div>
+    
+
+
+
+    <div class="divChart3" id="chart3" style="display:none;">
+      <h6 style="text-align: center;">Aplicaciones Fertilizantes</h6>
+      <h6 style="text-align: center;">Temporada {{anioFiltrarFertiTipo1}}-{{anioFiltrarFertiTipo2}}</h6>
+      <canvas id="myChart3" width="300" height="300"></canvas>
+      <div class="filtrarAño3">
+        <h6 class="title3">Filtrar por temporada</h6>
+        <br>
+        <div class="fil3">
+          <input type="text" class="form-control anio5" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 1" id="anio1FertiTipo">
+          <input type="text" class="form-control anio6" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 2" id="anio2FertiTipo">
+          <button type="button" class="btn btn-outline-dark fertiTipo1" name="button" id="ferti3" (click)="filtrarFertilizanteTipo()">Filtrar</button>
+        </div>
+      </div>
+      <label style="writing-mode: vertical-rl; text-orientation: sideways-left; margin-top: -900px; margin-left: -40px; margin-bottom: 310px; letter-spacing: 0.25em; -webkit-transform: rotate(-180deg);">Dosis (Lt/Ha)</label>
+    </div>
+
+
+    <div class="divChart4" id="chart4" style="display:none;">
+      <h6 style="text-align: center;">Aplicaciones Fitosanitarios</h6>
+      <h6 style="text-align: center;">Temporada {{anioFiltrarFitoTipo1}}-{{anioFiltrarFitoTipo2}}</h6>
+      <canvas id="myChart4" width="300" height="300"></canvas>
+      <div class="filtrarAño4">
+        <h6 class="titulo4">Filtrar por temporada</h6>
+        <br>
+        <div class="fit4">
+          <input type="text" class="form-control fitotipo1" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 1" id="anio1FitoTipo">
+          <input type="text" class="form-control fitotipo2" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año 2" id="anio2FitoTipo">
+          <button type="button" class="btn btn-outline-dark bot4" name="button" id="fito4" (click)="filtrarFitoTipo()">Filtrar</button>
+        </div>
+      </div>
+      <label style="writing-mode: vertical-rl; text-orientation: sideways-left; margin-top: -900px; margin-left: -40px; margin-bottom: 310px; letter-spacing: 0.25em; -webkit-transform: rotate(-180deg);">Dosis (Lt/Ha)</label>
+    </div>
+
+    <div class="divChart5" id="chart5" style="display:none;">
+      <h6 style="text-align: center;">Comparativa Fitosanitarios - Fertilizantes</h6>
+      <h6 style="text-align: center;">Temporada {{anioComparativaFito1}}-{{anioComparativaFito2}}</h6>
+      <canvas id="myChart5" width="300" height="300"></canvas>
+      <div class="filtrarAño5">
+        <div class="">
+          <h6 class="title5">Ingrese temporada fertilizante</h6>
+          <input type="text" class="form-control compa1" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año" id="anio1comparativa">
+          <input type="text" class="form-control compa2" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año" id="anio2comparativa">
+          <hr class="divisora">
+          <h6 class="title6">Ingrese temporada fitosanitario</h6>
+          <div>
+            <input type="text" class="form-control compa3" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año" id="anio3comparativa">
+            <input type="text" class="form-control compa4" name="" value="" onkeypress='return ((event.charCode >= 48 && event.charCode <= 57))' minlength="4" maxlength="4" placeholder="ingrese año" id="anio4comparativa">
+          </div>
+          <div class="centerbut">
+            <button type="button" class="btn btn-outline-dark but5" style="margin-left: 15px;" name="button" id="ocmparativa" (click)="filtrarLineal()">Filtrar</button>
+          </div>
+        </div>
+      </div>
+      <label style="writing-mode: vertical-rl; text-orientation: sideways-left; margin-top: -900px; margin-left: -40px; margin-bottom: 450px; letter-spacing: 0.25em; -webkit-transform: rotate(-180deg);">Cantidad de registros</label>
+    </div>
+  </div>
+</div>

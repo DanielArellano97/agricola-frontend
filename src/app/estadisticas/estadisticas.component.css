@@ -1,0 +1,289 @@
+::placeholder{
+  font-size: 0.7em;
+}
+
+.font1{
+  font-size: 100%;
+}
+
+.divChart{
+  margin-top: -180px;
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spin{
+  margin-top: 100px;
+  margin-left: 450px;
+  width: 100px;
+  height: 100px;
+}
+
+.title1{
+  padding-top: 20px;
+}
+
+.fil1{
+  margin-left: 30px;
+}
+
+.jeje{
+  margin-top: 200px;
+}
+
+.filtrarAño{
+  text-align: center;
+  margin-top: 20px;
+  background: #44D4B8;
+  border-radius: 3%;
+  color: white;
+  margin-left: 30px;
+  max-width: 100% !important;
+}
+
+.anio1{
+  text-align: center;
+  width: 35%;
+  margin-left: 5px;
+}
+
+.anio2{
+  text-align: center;
+  margin-left: 150px;
+  margin-top: -38px;
+  width: 35%;
+}
+
+.ferti1{
+  margin-right: -265px;
+  margin-top: -64px;
+}
+
+
+
+.divChart2{
+  margin-top: 20px;
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filtrarAño2{
+margin-top: 31px;
+padding-top: 20px;
+background: #ECAC18;
+border-radius: 3%;
+margin-bottom: 10px;
+margin-left: 25px;
+height: 117px;
+width: 425px;
+color: white;
+}
+
+.fito1{
+  margin-left: 335px;
+  margin-top: -67px;
+}
+
+.anio3{
+  width: 35%;
+  margin-top: 10px;
+  margin-left: 15px;
+  text-align: center;
+}
+
+.anio4{
+  width: 35%;
+  margin-left: 170px;
+  margin-top: -38px;
+  text-align: center;
+}
+
+.title2{
+  padding-top: 20px;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.fil2{
+  margin-top: -30px;
+}
+
+
+
+
+.divChart3{
+  margin-top: 20px;
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.filtrarAño3{
+  padding-top: 5%;
+  margin-top: 31px;
+  background: #44D4B8;
+  border-radius: 3%;
+  margin-left: 25px;
+}
+
+.fil3{
+  margin-top: -20px;
+}
+
+.title3{
+  text-align: center;
+  color: white;
+}
+
+.anio5{
+  width: 35%;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.anio6{
+  width: 35%;
+  margin-left: 180px;
+  margin-top: -38px;
+  text-align: center;
+}
+
+.fertiTipo1{
+  margin-left: 340px;
+  margin-top: -62px;
+}
+
+
+
+.divChart4{
+  margin-top: 20px;
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filtrarAño4{
+  margin-top: 31px;
+  background: #ECAC18;
+  border-radius: 3%;
+  margin-left: 25px;
+}
+
+.fitotipo1{
+  width: 35%;
+  margin-left: 20px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.fitotipo2{
+  width: 35%;
+  margin-left: 180px;
+  margin-top: -38px;
+  text-align: center;
+}
+
+.titulo4{
+  padding-top: 20px;
+  text-align: center;
+  color:white;
+}
+
+.fit4{
+  margin-top: -20px;
+}
+
+.bot4{
+  margin-left: 340px;
+  margin-top: -62px;
+}
+
+
+
+.divChart5{
+  margin-top: 20px;
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filtrarAño5{
+  background: #44D4B8;
+  margin-top: 15px;
+  border-radius: 3%;
+  margin-left: 35px;
+  width: 410px;
+}
+
+.title5{
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.cet{
+  margin-left: auto;
+  margin-right: auto;
+}
+.compa1{
+  width: 35%;
+  margin-left: 60px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.compa2{
+  width: 35%;
+  margin-left: 210px;
+  margin-top: -38px;
+  text-align: center;
+}
+
+.compa3{
+  margin-top: 20px;
+  width: 35%;
+  margin-left: 60px;
+  text-align: center;
+}
+
+.compa4{
+  width: 35%;
+  margin-left: 210px;
+  margin-top: -38px;
+  text-align: center;
+}
+
+.title6{
+  text-align: center;
+  margin-top: 20px;
+  color:white;
+}
+
+.divisora{
+  background: white;
+  width: 300px;
+  vertical-align: center;
+}
+
+.but5{
+  margin-top: 20px;
+  align-items: center;
+  width: 300px;
+  margin-left: 0px !important;
+}
+
+.centerbut{
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.centerInput2{
+  margin-left: auto;
+  margin-right: auto;
+}
