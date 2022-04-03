@@ -1,4 +1,8 @@
-# SistemaAgricola
+# Proyecto de titulo Frontend 2021
+
+Proyecto de tesis realizado el 2021 resolviendo el problema de registros de productos fitosanitarios y fertilizantes aplicados a los campos en donde se realiza el cultivo de uvas.
+
+Tecnologias, librerias y lenguajes usados: Angular, Bootstrap, ChartJs, Exceljs, PDFMake, SweetAlert2.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
